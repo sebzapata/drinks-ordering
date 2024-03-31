@@ -9,6 +9,7 @@
 
 .container {
   max-width: 1200px;
+
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
@@ -16,45 +17,13 @@
 }
 
 .header {
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1rem; */
   /* font-size: 1.75rem; */
 }
 
-.drinksList {
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-
-.drinksList h2 {
-  font-size: 1.25rem;
-}
-
-.drinksList p {
-  font-style: italic;
-}
-
-.drinksList input {
-  min-height: 1.5rem;
-  min-width: 1.5rem;
-  accent-color: black;
-}
-
-.drinkWrapper {
-  display: flex;
-  justify-content: space-between;
-}
-
-.drinkWrapper span {
-  display: flex;
-}
-
-.drinkText {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
 /* Mobile */
-@media (max-width: 700px) {
+
+/* @media (max-width: 700px) {
   .header {
     font-size: 1.25rem;
   }
@@ -66,4 +35,4 @@
   .drinksList p {
     font-size: 0.85rem;
   }
-}
+} */
