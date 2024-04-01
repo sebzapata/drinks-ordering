@@ -1,11 +1,15 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { useState } from "react";
 import { drinks } from "./drinks";
+import { orderDrinks } from "./lib/features/counter/drinksSlice";
+import { useAppDispatch } from "./lib/hooks";
 import styles from "./page.module.css";
 
 export default function Home() {
   const [drinksSelected, setDrinksSelected] = useState<string[]>([]);
+
+  const dispatch = useAppDispatch();
 
   const renderDrinksOptions = () => {
     return drinks.map((drink) => (
@@ -65,6 +69,7 @@ export default function Home() {
             padding: "0.5rem",
             borderRadius: "0.5rem",
           }}
+          onClick={() => dispatch(orderDrinks(drinksSelected))}
         >
           Confirm order
         </button>

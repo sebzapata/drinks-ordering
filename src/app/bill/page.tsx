@@ -1,13 +1,13 @@
 "use client";
 
+import { selectDrinksOrdered } from "../lib/features/counter/drinksSlice";
+import { useAppSelector } from "../lib/hooks";
 import styles from "./bill.module.css";
-import { useState } from "react";
 
-export default function Home() {
-  const drinksOrdered = ["Espresso martini", "Jameson on ice"];
+export default function Page() {
   const currentDate = new Date();
 
-  const [authenticated, setAuthenticated] = useState(false);
+  const drinksOrdered = useAppSelector(selectDrinksOrdered);
 
   if (currentDate.getHours() >= 0 && currentDate.getHours() < 9) {
     drinksOrdered.push("Post midnight besito tax");

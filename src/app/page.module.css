@@ -1,7 +1,6 @@
 .main {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 2rem;
   min-height: 100vh;
@@ -11,18 +10,19 @@
   max-width: 1200px;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
 }
 
 .header {
   margin-bottom: 1.5rem;
-  /* font-size: 1.75rem; */
 }
 
 .drinksList {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin-bottom: 0.5rem;
+  gap: 1rem;
 }
 
 .drinksList h2 {
@@ -31,6 +31,7 @@
 
 .drinksList p {
   font-style: italic;
+  margin-bottom: 0;
 }
 
 .drinksList input {
