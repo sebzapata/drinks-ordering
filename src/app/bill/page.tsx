@@ -12,6 +12,8 @@ const drinkNamesObject = {
   GOW: "Glass of wine",
 };
 
+const apiKey = process.env.API_KEY || "";
+
 export default function Page() {
   const [drinksOrdered, setDrinksOrdered] = useState<string[]>([]);
 
@@ -22,7 +24,7 @@ export default function Page() {
 
         headers: {
           "cache-control": "no-cache",
-          "x-apikey": "660c8a86d34bb02d658ec088	",
+          "x-apikey": apiKey,
         },
       };
 

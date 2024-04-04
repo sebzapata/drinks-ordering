@@ -5,6 +5,8 @@ import { drinks } from "./drinks";
 
 import styles from "./page.module.css";
 
+const apiKey = process.env.API_KEY || "";
+
 export default function Home() {
   const [drinksSelected, setDrinksSelected] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,7 +57,7 @@ export default function Home() {
       method: "POST",
       headers: {
         "cache-control": "no-cache",
-        "x-apikey": "660c8a86d34bb02d658ec088",
+        "x-apikey": apiKey,
         "content-type": "application/json",
       },
       body: JSON.stringify({
