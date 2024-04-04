@@ -5,15 +5,12 @@ import { drinks } from "./drinks";
 
 import styles from "./page.module.css";
 
-const apiKey = process.env.API_KEY || "";
+const apiKey = process.env.NEXT_PUBLIC_API_KEY || "";
 
 export default function Home() {
   const [drinksSelected, setDrinksSelected] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  console.log("env key", apiKey);
-  console.log("provess", process.env);
 
   const renderDrinksOptions = () => {
     return drinks.map((drink) => (
