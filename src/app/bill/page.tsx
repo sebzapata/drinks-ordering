@@ -1,17 +1,56 @@
 "use client";
 
-import { selectDrinksOrdered } from "../lib/features/counter/drinksSlice";
-import { useAppSelector } from "../lib/hooks";
+import { useEffect, useState } from "react";
 import styles from "./bill.module.css";
 
+const drinkNamesObject = {
+  EM: "Espresso martini",
+  FM: "French martini",
+  JOI: "Jameson on ice",
+  VSW: "Vodka, tropical juice & soda water",
+  GOC: "Glass of cava",
+  GOW: "Glass of wine",
+};
+
 export default function Page() {
-  const currentDate = new Date();
+  const [drinksOrdered, setDrinksOrdered] = useState<string[]>([]);
 
-  const drinksOrdered = useAppSelector(selectDrinksOrdered);
+  useEffect(() => {
+    const fetchDrinkData = async () => {
+      var options = {
+        method: "GET",
 
-  if (currentDate.getHours() >= 0 && currentDate.getHours() < 9) {
-    drinksOrdered.push("Post midnight besito tax");
-  }
+        headers: {
+          "cache-control": "no-cache",
+          "x-apikey": "660c8a86d34bb02d658ec088	",
+        },
+      };
+
+      const response = await fetch(
+        "https://drinkorder-c5f4.restdb.io/rest/drinks",
+        options
+      );
+
+      const rawDrinksData = await response.json();
+
+      const latestOrder = rawDrinksData[rawDrinksData.length - 1];
+      const latestDrinks: string[] = latestOrder.drinksRequested.split(", ");
+
+      const drinkNames = latestDrinks.map(
+        (drink) => drinkNamesObject[drink as keyof typeof drinkNamesObject]
+      );
+
+      const currentDate = new Date();
+
+      if (currentDate.getHours() >= 0 && currentDate.getHours() < 9) {
+        drinkNames.push("Post midnight besito tax");
+      }
+
+      setDrinksOrdered(drinkNames);
+    };
+
+    fetchDrinkData();
+  });
 
   const renderDrinksOrdered = () => {
     return drinksOrdered.map((drinkOrdered) => (

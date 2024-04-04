@@ -2,14 +2,13 @@
 
 import { useState } from "react";
 import { drinks } from "./drinks";
-import { orderDrinks } from "./lib/features/counter/drinksSlice";
-import { useAppDispatch } from "./lib/hooks";
+
 import styles from "./page.module.css";
 
 export default function Home() {
   const [drinksSelected, setDrinksSelected] = useState<string[]>([]);
-
-  const dispatch = useAppDispatch();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const renderDrinksOptions = () => {
     return drinks.map((drink) => (
@@ -51,7 +50,31 @@ export default function Home() {
     return null;
   };
 
-  // Congrats on ordering 1 of each drink!
+  const submitOrder = async () => {
+    var options = {
+      method: "POST",
+      headers: {
+        "cache-control": "no-cache",
+        "x-apikey": "660c8a86d34bb02d658ec088",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        drinksRequested: drinksSelected.join(", "),
+        time: new Date(),
+      }),
+      json: true,
+    };
+
+    try {
+      setIsSubmitting(true);
+      await fetch("https://drinkorder-c5f4.restdb.io/rest/drinks", options);
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    } catch (err) {
+      setIsSubmitting(false);
+      throw Error(`Error: $${err}`);
+    }
+  };
 
   return (
     <main className={styles.main}>
@@ -63,16 +86,21 @@ export default function Home() {
           {renderErrorMessage()}
         </p>
         <button
-          disabled={!!renderErrorMessage()}
+          disabled={!!renderErrorMessage() || isSubmitted || isSubmitting}
           style={{
             marginLeft: "auto",
             padding: "0.5rem",
             borderRadius: "0.5rem",
           }}
-          onClick={() => dispatch(orderDrinks(drinksSelected))}
+          onClick={async () => {
+            await submitOrder();
+          }}
         >
           Confirm order
         </button>
+        {isSubmitted && (
+          <p>Thank you for your order, it will be with you shortly!</p>
+        )}
       </div>
     </main>
   );
