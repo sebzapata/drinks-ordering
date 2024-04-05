@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { drinks } from "./drinks";
 
@@ -77,7 +76,32 @@ export default function Home() {
       throw Error(`Error: $${err}`);
     }
   };
+  const renderButtonSection = () => {
+    if (isSubmitted) {
+      return <p>Thank you for your order, it will be with you shortly!</p>;
+    }
 
+    return (
+      <button
+        disabled={
+          !!renderErrorMessage() ||
+          isSubmitted ||
+          isSubmitting ||
+          !drinksSelected.length
+        }
+        style={{
+          marginLeft: "auto",
+          padding: "0.5rem",
+          borderRadius: "0.5rem",
+        }}
+        onClick={async () => {
+          await submitOrder();
+        }}
+      >
+        Confirm order
+      </button>
+    );
+  };
   return (
     <main className={styles.main}>
       <div className={styles.container}>
@@ -87,27 +111,7 @@ export default function Home() {
         <p style={{ color: "red", marginBottom: "8px", marginLeft: "auto" }}>
           {renderErrorMessage()}
         </p>
-        <button
-          disabled={
-            !!renderErrorMessage() ||
-            isSubmitted ||
-            isSubmitting ||
-            !drinksSelected.length
-          }
-          style={{
-            marginLeft: "auto",
-            padding: "0.5rem",
-            borderRadius: "0.5rem",
-          }}
-          onClick={async () => {
-            await submitOrder();
-          }}
-        >
-          Confirm order
-        </button>
-        {isSubmitted && (
-          <p>Thank you for your order, it will be with you shortly!</p>
-        )}
+        {renderButtonSection()}
       </div>
     </main>
   );
