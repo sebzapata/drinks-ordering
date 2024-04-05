@@ -1,7 +1,6 @@
 .main {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 2rem;
   min-height: 100vh;
@@ -9,30 +8,7 @@
 
 .container {
   max-width: 1200px;
-
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
 }
-
-.header {
-  /* margin-bottom: 1rem; */
-  /* font-size: 1.75rem; */
-}
-
-/* Mobile */
-
-/* @media (max-width: 700px) {
-  .header {
-    font-size: 1.25rem;
-  }
-
-  .drinksList h2 {
-    font-size: 1rem;
-  }
-
-  .drinksList p {
-    font-size: 0.85rem;
-  }
-} */
