@@ -51,7 +51,7 @@ export default function Page() {
       }
 
       setDrinksOrdered(drinkNames);
-      const dateOfOrder = new Date(latestDrinks.time);
+      const dateOfOrder = new Date(latestOrder.time);
 
       setTime(dateOfOrder.toLocaleDateString());
     };
