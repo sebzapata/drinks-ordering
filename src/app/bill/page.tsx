@@ -6,6 +6,7 @@ import styles from "./bill.module.css";
 const drinkNamesObject = {
   EM: "Espresso martini",
   FM: "French martini",
+  PM: "Porn star martini",
   JOI: "Jameson on ice",
   VSW: "Vodka, tropical juice & soda water",
   GOC: "Glass of cava",

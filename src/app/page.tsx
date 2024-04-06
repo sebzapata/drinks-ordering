@@ -44,7 +44,11 @@ export default function Home() {
       return "You can't order more than 2 drinks!";
     }
 
-    if (drinksSelected.includes("EM") && drinksSelected.includes("FM")) {
+    if (
+      (drinksSelected.includes("EM") && drinksSelected.includes("FM")) ||
+      (drinksSelected.includes("EM") && drinksSelected.includes("PM")) ||
+      (drinksSelected.includes("FM") && drinksSelected.includes("PM"))
+    ) {
       return "No ordering more than 1 martini drink. Let's not make things difficult.";
     }
 

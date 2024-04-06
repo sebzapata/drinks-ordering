@@ -56,6 +56,33 @@ export const drinks: IDrink[] = [
       </svg>
     ),
   },
+
+  {
+    name: "Porn Star Martini",
+    description:
+      "Vanilla vodka, mango & passion fruit juice & a splash of bubbly!",
+    id: "PM",
+    icon: (
+      <svg
+        height="50"
+        width="50"
+        fill="#000000"
+        viewBox="0 0 256 256"
+        id="Flat"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <g id="SVGRepo_iconCarrier">
+          <path d="M235.69531,38.46924A4,4,0,0,0,232,36H24a3.99976,3.99976,0,0,0-2.82812,6.82812l31.999,31.99952.00146.00146L124,145.65674V212H88a4,4,0,0,0,0,8h80a4,4,0,0,0,0-8H132V145.65674L202.82764,74.8291l.00146-.00146,31.999-31.99952A3.99842,3.99842,0,0,0,235.69531,38.46924ZM128,138.34326,65.65674,76H190.34326ZM198.34326,68H57.65674l-24-24H222.34326Z"></path>
+        </g>
+      </svg>
+    ),
+  },
   {
     name: "Jameson on ice",
     description: "It's Jameson, on ice. I mean, honestly...",
