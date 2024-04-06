@@ -72,7 +72,7 @@ export default function Home() {
 
     try {
       setIsSubmitting(true);
-      await fetch("https://drinkorder-c5f4.restdb.io/rest/drinks", options);
+      await fetch("https://drinksorder-df33.restdb.io/rest/drinks", options);
       setIsSubmitting(false);
       setIsSubmitted(true);
     } catch (err) {

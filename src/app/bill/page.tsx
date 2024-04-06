@@ -31,7 +31,7 @@ export default function Page() {
       };
 
       const response = await fetch(
-        "https://drinkorder-c5f4.restdb.io/rest/drinks",
+        "https://drinksorder-df33.restdb.io/rest/drinks",
         options
       );
 
@@ -51,9 +51,6 @@ export default function Page() {
       }
 
       setDrinksOrdered(drinkNames);
-      const dateOfOrder = new Date(latestOrder.time);
-
-      setTime(dateOfOrder.toLocaleDateString());
     };
 
     fetchDrinkData();
@@ -82,7 +79,7 @@ export default function Page() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <h1 className={styles.header}>{`Bill - ${time}`}</h1>
+        <h1 className={styles.header}>{`Bill - ${drinksOrdered.length}`}</h1>
 
         <hr
           className="border-2 opacity-100"
