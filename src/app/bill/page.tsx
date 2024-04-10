@@ -18,6 +18,7 @@ const apiKey = process.env.NEXT_PUBLIC_API_KEY || "";
 export default function Page() {
   const [drinksOrdered, setDrinksOrdered] = useState<string[]>([]);
   const [time, setTime] = useState("");
+  const [orderNumber, setOrderNumber] = useState(0);
 
   useEffect(() => {
     const fetchDrinkData = async () => {
@@ -51,8 +52,14 @@ export default function Page() {
       }
 
       setDrinksOrdered(drinkNames);
+      setOrderNumber(rawDrinksData.length);
 
-      setTime(new Date(latestOrder.time).toDateString());
+      const orderTime = new Date(latestOrder.time);
+      setTime(
+        `${String(orderTime.getHours()).padStart(2, "0")}:${String(
+          orderTime.getMinutes()
+        ).padStart(2, "0")}`
+      );
     };
 
     fetchDrinkData();
@@ -81,7 +88,7 @@ export default function Page() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <h1 className={styles.header}>{`Bill - ${time}`}</h1>
+        <h1 className={styles.header}>{`Bill - #${orderNumber}, ${time}`}</h1>
 
         <hr
           className="border-2 opacity-100"
