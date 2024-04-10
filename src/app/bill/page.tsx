@@ -51,6 +51,8 @@ export default function Page() {
       }
 
       setDrinksOrdered(drinkNames);
+
+      setTime(new Date(latestOrder.time).toDateString());
     };
 
     fetchDrinkData();
@@ -79,7 +81,7 @@ export default function Page() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <h1 className={styles.header}>{`Bill - ${drinksOrdered.length}`}</h1>
+        <h1 className={styles.header}>{`Bill - ${time}`}</h1>
 
         <hr
           className="border-2 opacity-100"
