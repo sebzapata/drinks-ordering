@@ -54,7 +54,7 @@ export default function Page() {
     };
 
     fetchDrinkData();
-  });
+  }, []);
 
   const renderDrinksOrdered = () => {
     return drinksOrdered.map((drinkOrdered) => (

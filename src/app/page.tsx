@@ -80,6 +80,7 @@ export default function Home() {
       throw Error(`Error: $${err}`);
     }
   };
+
   const renderButtonSection = () => {
     if (isSubmitted) {
       return <p>Thank you for your order, it will be with you shortly!</p>;
